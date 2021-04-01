@@ -19,9 +19,9 @@ class FoCucc:
     def fajlNyitasFelulIrasra():
         with open((FoCucc.FAJL), "r", encoding="utf-8") as fr:
             fr = fr.read().replace("\n", ":").split(":")
-            for x in fr[:-4]:
-                ujF, ujH,mN = fr[-4], fr[-3], fr[-1]
-                utsoNapiAdat = NapiAdat(ujF, ujH, mN)
+            for x in fr[:-5]:
+                az, ujF, ujH,mN =fr[-5], fr[-4], fr[-3], fr[-1]
+                utsoNapiAdat = NapiAdat(az, ujF, ujH, mN)
             print(utsoNapiAdat.maiNapVan)
             return utsoNapiAdat.maiNapVan
 
@@ -41,6 +41,7 @@ class FoCucc:
     
 
             #return utsoNapiAdat.maiNapVan
+    #tablazathoz
     def adatOlvasas():
         objectList=[]
         with open(FoCucc.FAJLOLVASNI, 'rt', encoding='utf-8') as fr:
@@ -133,10 +134,10 @@ class NapiAdat:
                 lines = fw.readlines()
                 utsosorCharSzam=len(lines[len(lines) - 1])
                 utsoSor = lines[len(lines) - 1].split(":")  #listat ad vissza az utsosor elemeivel
-                utsosor[0]=ujObject.az
+                utsoSor[0]=ujObject.az
                 utsoSor[1] = ujObject.ujFertozott
                 utsoSor[2] = ujObject.napiHalott
-                regiObject=NapiAdat(utsosor[0],utsoSor[1],utsoSor[2],ujObject.mentesNap)
+                regiObject=NapiAdat(utsoSor[0],utsoSor[1],utsoSor[2],ujObject.mentesNap)
 
                 print('regi: {0}, utsosor: {1}'.format(regiObject, utsoSor))
                 fw.seek(regiObject.az)
