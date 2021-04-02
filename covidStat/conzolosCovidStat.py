@@ -17,28 +17,46 @@ class FoCucc:
     FAJL = "mentettTestData.txt"
     FAJLOLVASNI = "mentettData.txt"
 
+    #@staticmethod
+    #def fajlNyitasFelulIrasra():
+    #    with open((FoCucc.FAJL), "r", encoding="utf-8") as fr:
+    #        fr = fr.read().replace("\n", ":").split(":")
+    #        for x in fr[:-5]:
+    #            ujF, ujH, mN = fr[-4], fr[-3], fr[-1]
+    #            utsoNapiAdat = NapiAdat(ujF, ujH, mN)
+    #        print(utsoNapiAdat.maiNapVan)
+    #        return utsoNapiAdat.maiNapVan
     @staticmethod
-    def fajlNyitasFelulIrasra():
-        with open((FoCucc.FAJL), "r", encoding="utf-8") as fr:
-            fr = fr.read().replace("\n", ":").split(":")
-            for x in fr[:-5]:
-                ujF, ujH, mN = fr[-4], fr[-3], fr[-1]
-                utsoNapiAdat = NapiAdat(ujF, ujH, mN)
-            print(utsoNapiAdat.maiNapVan)
-            return utsoNapiAdat.maiNapVan
+    def voltEmarMamentes():
+        with open(FoCucc.FAJLOLVASNI, "rt", encoding="utf-8") as fr:
+            lines = fr.readlines()
+            ujLinesReverse = lines.copy()
+            ujLinesReverse = ujLinesReverse[-1:-2:-1]
+            felvagva = ujLinesReverse[0].split(":")
+            mentesnap = felvagva[len(felvagva) - 1]
+            d = datetime.today().day
+            if mentesnap == str(d):
+                print(f"mentesnap {mentesnap} mainap {d}")
+                return True
+            else:
+                print(f"mentesnap {mentesnap} mainap {d}")
+                return False
+    @staticmethod
+    def adatIras(voltEmarMamentes=None):
 
-    @staticmethod
-    def adatIras(fajlNyitasFelulIrasra=None, obj=None):
-        if obj == None:
-            raise Exception
-            print("vm hiba az adatlekérésben")
+        if voltEmarMamentes == None:
+            voltEmarMamentes = True
+
         # print("fajlolvassasra: "+str(fajlNyitasFelulIrasra)+ "obj: "+str(obj))
-        if fajlNyitasFelulIrasra == None:
-            fajlNyitasFelulIrasra = True
-        if fajlNyitasFelulIrasra == True:
+        if voltEmarMamentes == True:
+            try:
+                obj = NapiAdat.napiAdatkeresObjLetrehozasNelkul()
+            except Exception:
+                print ("vm hiba az adatlekérésben")
             obj.felulIras(obj)
             print("felülírtam")
         else:
+            obj=NapiAdat.napiAdatKeres()
             obj.mentes(obj)
             print("mentettem")
 
@@ -62,21 +80,7 @@ class FoCucc:
             # print(str(objectList))
             return objectList
 
-    @staticmethod
-    def voltEmarMamentes():
-        with open(FoCucc.FAJLOLVASNI, "rt", encoding="utf-8") as fr:
-            lines = fr.readlines()
-            ujLinesReverse = lines.copy()
-            ujLinesReverse = ujLinesReverse[-1:-2:-1]
-            felvagva = ujLinesReverse[0].split(":")
-            mentesnap = felvagva[len(felvagva) - 1]
-            d = datetime.today().day
-            if mentesnap == str(d):
-                print(f"mentesnap {mentesnap} mainap {d}")
-                return True
-            else:
-                print(f"mentesnap {mentesnap} mainap {d}")
-                return False
+
 
     @staticmethod
     # tablazathoz majd:
@@ -208,9 +212,9 @@ class NapiAdat:
                 fw.close()
 
 
-obj = NapiAdat.napiAdatKeres()
-FoCucc.adatIras(FoCucc.fajlNyitasFelulIrasra(), obj)
-# adatObjLista = FoCucc.adatOlvasas()
-# FoCucc.kiIrFertozottek(adatObjLista)
-# FoCucc.kiIrHalottak(adatObjLista)
-# FoCucc.ertekeles(adatObjLista)
+
+#FoCucc.adatIras(FoCucc.voltEmarMamentes())
+#adatObjLista = FoCucc.adatOlvasas()
+#FoCucc.kiIrFertozottek(adatObjLista)
+#FoCucc.kiIrHalottak(adatObjLista)
+#FoCucc.ertekeles(adatObjLista)
