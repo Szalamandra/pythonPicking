@@ -74,8 +74,13 @@ class MyFrameFo(wx.Frame):
         #vagyis a self az nem is a button
         #target=dir(self)
         #target=getattribute(self.mutassamBtn)
-        print(target)
-        event.Skip()
+        #btnFrameDict = {self.mutassamBtn: MyFrameMutassam, self.mondjamBtn: MyFrameMondjam, MyFrameMondjam.visszaBtn: MyFrameFo}
+        btnList=[]
+        if self.isinstance(MyFrameFo):
+            btnList = [self.mutassamBtn, self.mondjamBtn]
+        print(dir(MyFrameMondjam))
+        print(str(btnList))
+        event.Skip() 
 
 # end of class MyFrameFo
 
@@ -267,11 +272,14 @@ class MyFrameMutassam(wx.Frame):
 
 class MyApp(wx.App):
     def OnInit(self):
+        
         self.frame = MyFrameFo(None, wx.ID_ANY, "")
+        self.frame2 = MyFrameMondjam(None, wx.ID_ANY, "")
         self.SetTopWindow(self.frame)
         self.frame.Show()
+        
         return True
-
+   
 # end of class MyApp
 
 if __name__ == "__main__":

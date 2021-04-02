@@ -17,6 +17,7 @@ class FoCucc:
     FAJL = "mentettTestData.txt"
     FAJLOLVASNI = "mentettData.txt"
 
+    @staticmethod
     def fajlNyitasFelulIrasra():
         with open((FoCucc.FAJL), "r", encoding="utf-8") as fr:
             fr = fr.read().replace("\n", ":").split(":")
@@ -26,6 +27,7 @@ class FoCucc:
             print(utsoNapiAdat.maiNapVan)
             return utsoNapiAdat.maiNapVan
 
+    @staticmethod
     def adatIras(fajlNyitasFelulIrasra=None, obj=None):
         if obj == None:
             raise Exception
@@ -43,6 +45,7 @@ class FoCucc:
             # return utsoNapiAdat.maiNapVan
 
     # tablazathoz
+    @staticmethod
     def adatOlvasas():
         objectList = []
         with open(FoCucc.FAJLOLVASNI, "rt", encoding="utf-8") as fr:
@@ -52,22 +55,41 @@ class FoCucc:
             ujLinesReverse = ujLinesReverse[-1:-6:-1]
             for lines in range(5):
                 az, nF, nH, nD, mN = ujLinesReverse[lines].replace("\n", "").split(":")
-                uj = NapiAdat(az, nF, nH, mN)
+                # uj = NapiAdat( nF, nH, mN)
                 # print(uj)
-                objectList.append(uj)
+                objectList.append(NapiAdat(nF, nH, mN))
 
             # print(str(objectList))
             return objectList
 
+    @staticmethod
+    def voltEmarMamentes():
+        with open(FoCucc.FAJLOLVASNI, "rt", encoding="utf-8") as fr:
+            lines = fr.readlines()
+            ujLinesReverse = lines.copy()
+            ujLinesReverse = ujLinesReverse[-1:-2:-1]
+            felvagva = ujLinesReverse[0].split(":")
+            mentesnap = felvagva[len(felvagva) - 1]
+            d = datetime.today().day
+            if mentesnap == str(d):
+                print(f"mentesnap {mentesnap} mainap {d}")
+                return True
+            else:
+                print(f"mentesnap {mentesnap} mainap {d}")
+                return False
+
+    @staticmethod
     # tablazathoz majd:
     def kiIrFertozottek(objList):
         for i in range(5):
             print(objList[i].ujFertozott)
 
+    @staticmethod
     def kiIrHalottak(objList):
         for i in range(5):
             print(objList[i].napiHalott)
 
+    @staticmethod
     # ertekeles
     def ertekeles(objList):
         szamolo = 0
@@ -89,7 +111,8 @@ class NapiAdat:
     def __init__(self, ujFertozott, napiHalott, mentesNap):
         self.ujFertozott = ujFertozott
         self.napiHalott = napiHalott
-        self.az = NapiAdat.COUNTER + 1
+        NapiAdat.COUNTER += 1
+        self.az = NapiAdat.COUNTER
 
         self.mentesNap = mentesNap
         self.maiNapVan = str(NapiAdat.maiNap.day) == self.mentesNap
@@ -105,6 +128,7 @@ class NapiAdat:
         return f"{self.maiNap.year} {self.maiNap.month} {self.maiNap.day}"
 
     # NapiAdat object-et adja vissza
+    @staticmethod
     def napiAdatKeres():
         html_text = urllib.request.urlopen(URL)
         soup = bs.BeautifulSoup(html_text, "html.parser")
@@ -114,13 +138,29 @@ class NapiAdat:
             uj = napi.find("strong")
             napiDataList.append(uj)
         # print(napiDataList)
-
-        for d in range(1):
-            ujFertozott = str(napiDataList[0])[
-                8:-9
-            ]  # .strip("<strong>") de nemjo a zarotag miatt   # str mert a type is bs4 class element
-            napiHalott = str(napiDataList[1])[8:-9]
+        ujFertozott = str(napiDataList[0])[
+            8:-9
+        ]  # .strip("<strong>") de nemjo a zarotag miatt   # str mert a type is bs4 class element
+        napiHalott = str(napiDataList[1])[8:-9]
         # print(f"{napiHalott} es a fert {ujFertozott}")
+        ma = str(NapiAdat.maiNap.day)
+        # az=NapiAdat.COUNTER
+        ujNapi = NapiAdat(ujFertozott, napiHalott, ma)
+        return ujNapi
+
+    @staticmethod
+    def napiAdatkeresObjLetrehozasNelkul():
+        html_text = urllib.request.urlopen(URL)
+        soup = bs.BeautifulSoup(html_text, "html.parser")
+        statDataList = soup.findAll("div", class_="tIUMlb")
+        napiDataList = []
+        for napi in statDataList:
+            uj = napi.find("strong")
+            napiDataList.append(uj)
+        # print(napiDataList)
+        ujFertozott = str(napiDataList[0])[8:-9]
+        napiHalott = str(napiDataList[1])[8:-9]
+
         ma = str(NapiAdat.maiNap.day)
         # az=NapiAdat.COUNTER
         ujNapi = NapiAdat(ujFertozott, napiHalott, ma)
@@ -148,7 +188,8 @@ class NapiAdat:
         if ujObject == None:
             raise Exception
         else:
-            with open(FoCucc.FAJL, "a+", encoding="UTF-8") as fw:
+            lines = []
+            with open(FoCucc.FAJL, "r+", encoding="UTF-8") as fw:
                 fw.seek(0)
                 lines = fw.readlines()
                 # utsosorCharSzam=len(lines[len(lines) - 1])
@@ -156,19 +197,14 @@ class NapiAdat:
                 print("utso: " + utsoSor)
                 # utsoSor = lines[len(lines) - 1].split(":")  #listat ad vissza
                 utsoSor = utsoSor.split(":")
-
-                # az utsosor elemeivel
                 utsoSor[0] = ujObject.az
                 utsoSor[1] = ujObject.ujFertozott
                 utsoSor[2] = ujObject.napiHalott
-                # regiObject=NapiAdat(utsoSor[1],utsoSor[2],ujObject.mentesNap)
-
-                # print('regi: {0}, utsosor: {1}'.format(regiObject, utsoSor))
-                fw.seek(utsoSor[0])
-                # print("régiazjanak: "+str(regiObject.az))
-
-                fw.write("\n" + str(ujObject))
-
+                lines.append(ujObject)
+                fw.close()
+            with open(FoCucc.FAJL, "w+", encoding="UTF-8") as fw:
+                for line in range(len(lines)):
+                    fw.write(str(lines[line]))
                 fw.close()
 
 
