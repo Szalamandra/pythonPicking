@@ -4,6 +4,7 @@
 #
 
 import wx
+from wx.adv import Animation, AnimationCtrl
 
 # begin wxGlade: dependencies
 import wx.grid
@@ -54,17 +55,13 @@ class MyFrameMondjam(wx.Frame):
 
         sizer_ertekeles_rossz_kep = wx.BoxSizer(wx.HORIZONTAL)
 
-        bitmap_1 = wx.StaticBitmap(
-            self.panel_ertekeles_rossz,
-            wx.ID_ANY,
-            wx.Bitmap(
-                "C:/Users/Szalamandra/Documents/szf/egressy/python/wxgladesprogik/wxglade_env/projektek/covidStat/images/walkSmall.gif",
-                wx.BITMAP_TYPE_ANY,
-            ),
-        )
-        sizer_ertekeles_rossz_kep.Add(
-            bitmap_1, 1, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT | wx.TOP, 10
-        )
+        #bitmap_1 = wx.StaticBitmap(
+        #   self.panel_ertekeles_rossz,
+        #  wx.ID_ANY,
+        #   wx.Bitmap(
+        #       "C:/Users/Szalamandra/Documents/szf/egressy/python/wxgladesprogik/wxglade_env/projektek/covidStat/images/walkSmall.gif"))
+        #  sizer_ertekeles_rossz_kep.Add(
+        #     bitmap_1, 1, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT | wx.TOP, 10)
 
         self.panel_ertekeles_rossz_szoveg = wx.Panel(
             self.panelFo_ertekelesRossz, wx.ID_ANY
@@ -130,17 +127,17 @@ class MyFrameMondjam(wx.Frame):
 
         sizer_8 = wx.BoxSizer(wx.HORIZONTAL)
 
-        bitmap_2 = wx.StaticBitmap(
-            self.panel_ertekeles_KozepKep,
-            wx.ID_ANY,
-            wx.Bitmap(
-                "C:\\Users\\Szalamandra\\Documents\\szf\\egressy\\python\\wxgladesprogik\\wxglade_env\\projektek\\covidStat\\images\\prepareSmall.gif",
-                wx.BITMAP_TYPE_ANY,
-            ),
-        )
-        sizer_8.Add(
-            bitmap_2, 1, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT | wx.TOP, 10
-        )
+        #bitmap_2 = wx.StaticBitmap(
+        #    self.panel_ertekeles_KozepKep,
+        #    wx.ID_ANY,
+        #    wx.Bitmap(
+        #        #"C:\\Users\\Szalamandra\\Documents\\szf\\egressy\\python\\wxgladesprogik\\wxglade_env\\projektek\\covidStat\\images\\prepareSmall.gif",
+        #        wx.BITMAP_TYPE_ANY,
+        #    ),
+        #)
+        #sizer_8.Add(
+        #    bitmap_2, 1, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT | wx.TOP, 10
+        #)
 
         self.panel_ertekeles_kozep_szoveg = wx.Panel(
             self.panelFo_ertekelesKozep, wx.ID_ANY
@@ -281,17 +278,16 @@ class MyFrameMondjam(wx.Frame):
 
         sizer_ertekeles_joKep = wx.BoxSizer(wx.HORIZONTAL)
 
-        bitmap_3 = wx.StaticBitmap(
-            self.panel_ertekeles_joKep,
-            wx.ID_ANY,
-            wx.Bitmap(
-                "C:/Users/Szalamandra/Documents/szf/egressy/python/wxgladesprogik/wxglade_env/projektek/covidStat/images/walkSmall.gif",
-                wx.BITMAP_TYPE_ANY,
-            ),
-        )
-        sizer_ertekeles_joKep.Add(
-            bitmap_3, 1, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT | wx.TOP, 10
-        )
+        #bitmap_3 = wx.StaticBitmap(
+        #    self.panel_ertekeles_joKep,
+        #    wx.ID_ANY,
+        #    wx.Bitmap(
+        #        "C:/Users/Szalamandra/Documents/szf/egressy/python/wxgladesprogik/wxglade_env/projektek/covidStat/images/walkSmall.gif",
+        #        wx.BITMAP_TYPE_ANY,
+        #    ),
+        #)
+#            bitmap_3, 1, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT | wx.TOP, 10
+#       )
 
         self.panel_ertekeles_joSzoveg = wx.Panel(self.panelFo_ertekelesJo, wx.ID_ANY)
         sizer_11.Add(self.panel_ertekeles_joSzoveg, 1, wx.EXPAND, 0)
@@ -373,7 +369,27 @@ class MyFrameMondjam(wx.Frame):
 
         #self.Bind(wx.EVT_BUTTON, self.click_frameValto, self.visszaBtn_copy)
         # end wxGlade
-
+        #gif hozzáadása: https://stackoverflow.com/questions/49389742/animated-gif-with-wxpython-phoenix
+        gif_1 = Animation("C:/Users/Szalamandra/Documents/szf/egressy/python/wxgladesprogik/wxglade_env/projektek/covidStat/images/walkSmall.gif")
+        ctrl = AnimationCtrl(self, -1, gif_1)
+        ctrl.Play()                
+        sizer_ertekeles_rossz_kep.Add(
+            ctrl, 1, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT | wx.TOP, 10
+        )
+        self.Layout()
+        gif_2 = Animation("C:\\Users\\Szalamandra\\Documents\\szf\\egressy\\python\\wxgladesprogik\\wxglade_env\\projektek\\covidStat\\images\\prepareSmall.gif")
+        ctrl2 = AnimationCtrl(self, -1, gif_2)
+        ctrl2.Play()                
+        sizer_8.Add(
+            ctrl2, 1, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT | wx.TOP, 10
+        )
+        gif_3 = Animation("C:/Users/Szalamandra/Documents/szf/egressy/python/wxgladesprogik/wxglade_env/projektek/covidStat/images/partyTimeSmall.gif")
+        ctrl3 = AnimationCtrl(self, -1, gif_3)
+        ctrl3.Play()                
+        sizer_ertekeles_joKep.Add(
+            ctrl3, 1, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT | wx.TOP, 10
+        )
+        self.Layout()
 
         mondjamController(self)
 
