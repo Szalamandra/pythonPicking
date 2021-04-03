@@ -9,6 +9,7 @@ import wx
 # end wxGlade
 from models.conzolosCovidStat import FoCucc
 from models.conzolosCovidStat import NapiAdat
+from controllers.main_controller import MainController
 from controllers.mondjam_controller import mondjamController
 from controllers.mutassam_controller import mutassamController
 
@@ -151,16 +152,13 @@ class MyFrameFo(wx.Frame):
         self.Layout()
         self.Centre()
 
-        self.Bind(wx.EVT_BUTTON, self.click_frameValto, self.mondjamBtn)
-        self.Bind(wx.EVT_BUTTON, self.click_frameValto, self.mutassamBtn)
         # end wxGlade
 
-        mondjamController(self.kezdoPanel)
-        mutassamController(self.kezdoPanel)
+        MainController(self)
+        #mondjamController(self.kezdoPanel)
+        #mutassamController(kezdoPanel)
 
-    def click_frameValto(self, event):  # wxGlade: MyFrameFo.<event_handler>
-        print("Event handler 'click_frameValto' not implemented!")
-        event.Skip()
+
 
 
 # end of class MyFrameFo

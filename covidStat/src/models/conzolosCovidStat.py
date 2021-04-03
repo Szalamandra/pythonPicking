@@ -14,6 +14,10 @@ URL = "https://news.google.com/covid19/map?hl=hu&gl=HU&ceid=HU%3Ahu&mid=%2Fm%2F0
 
 # html_text = requests.get(URL).content  ez akkor ha csak a requestset importalom
 class FoCucc:
+    #legyen egy főmethod
+    def __init__(self):
+        pass
+
     FAJL = "mentettTestData.txt"
     FAJLOLVASNI = "mentettData.txt"
 

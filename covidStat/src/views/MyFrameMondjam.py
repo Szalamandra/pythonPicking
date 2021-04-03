@@ -11,6 +11,7 @@ import wx.grid
 # end wxGlade
 from models.conzolosCovidStat import FoCucc
 from models.conzolosCovidStat import NapiAdat
+from controllers.mondjam_controller import mondjamController
 
 # begin wxGlade: extracode
 # end wxGlade
@@ -370,12 +371,11 @@ class MyFrameMondjam(wx.Frame):
 
         self.Layout()
 
-        self.Bind(wx.EVT_BUTTON, self.click_frameValto, self.visszaBtn_copy)
+        #self.Bind(wx.EVT_BUTTON, self.click_frameValto, self.visszaBtn_copy)
         # end wxGlade
 
-    def click_frameValto(self, event):  # wxGlade: MyFrameMondjam.<event_handler>
-        print("Event handler 'click_frameValto' not implemented!")
-        event.Skip()
+
+        mondjamController(self)
 
 
 # end of class MyFrameMondjam

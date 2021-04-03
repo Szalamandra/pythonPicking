@@ -17,8 +17,8 @@ class FoCucc:
     FAJL = "mentettTestData.txt"
     FAJLOLVASNI = "mentettData.txt"
 
-    #@staticmethod
-    #def fajlNyitasFelulIrasra():
+    # @staticmethod
+    # def fajlNyitasFelulIrasra():
     #    with open((FoCucc.FAJL), "r", encoding="utf-8") as fr:
     #        fr = fr.read().replace("\n", ":").split(":")
     #        for x in fr[:-5]:
@@ -41,6 +41,7 @@ class FoCucc:
             else:
                 print(f"mentesnap {mentesnap} mainap {d}")
                 return False
+
     @staticmethod
     def adatIras(voltEmarMamentes=None):
 
@@ -52,11 +53,11 @@ class FoCucc:
             try:
                 obj = NapiAdat.napiAdatkeresObjLetrehozasNelkul()
             except Exception:
-                print ("vm hiba az adatlekérésben")
+                print("vm hiba az adatlekérésben")
             obj.felulIras(obj)
             print("felülírtam")
         else:
-            obj=NapiAdat.napiAdatKeres()
+            obj = NapiAdat.napiAdatKeres()
             obj.mentes(obj)
             print("mentettem")
 
@@ -79,8 +80,6 @@ class FoCucc:
 
             # print(str(objectList))
             return objectList
-
-
 
     @staticmethod
     # tablazathoz majd:
@@ -212,9 +211,8 @@ class NapiAdat:
                 fw.close()
 
 
-
-#FoCucc.adatIras(FoCucc.voltEmarMamentes())
-#adatObjLista = FoCucc.adatOlvasas()
-#FoCucc.kiIrFertozottek(adatObjLista)
-#FoCucc.kiIrHalottak(adatObjLista)
-#FoCucc.ertekeles(adatObjLista)
+# FoCucc.adatIras(FoCucc.voltEmarMamentes())
+adatObjLista = FoCucc.adatOlvasas()
+# FoCucc.kiIrFertozottek(adatObjLista)
+# FoCucc.kiIrHalottak(adatObjLista)
+FoCucc.ertekeles(adatObjLista)
