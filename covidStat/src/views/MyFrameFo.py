@@ -158,15 +158,23 @@ class MyFrameFo(wx.Frame):
         # mondjamController(self.kezdoPanel)
         # mutassamController(kezdoPanel)
         self.frame_statusbar.SetStatusText("Allways Look on The Bright Side Of LIfe!!!")
-        self.frame_statusbar.SetDefaultCellAlignment(wx.ALIGN_CENTER, wx.ALIGN_TOP)
+        self.idoSzerintKoszon()
 
     # end of class MyFrameFo
 
     def idoSzerintKoszon(self):
-        t = 0
-        tdel=10
-        if  t< tdel:
+        t = datetime.now().hour
+        #tdelta1 = timedelta(hours=12)/60**2
+        #tdelta2 = timedelta(hours=18)
+        #print(tdelta1.total_seconds())
+        print(t)
+        
+        if t < 12:
+            print("hurrá")
             self.frame_statusbar.SetStatusText("Jóreggelt!")
-        else:
+        elif t<18: 
             self.frame_statusbar.SetStatusText("Csak így tovább, még sok szép perc van hátra!")
+        else:
+            self.frame_statusbar.SetStatusText("Holnap még ennél is minden szebb lesz!")
+
 

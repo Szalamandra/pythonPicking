@@ -5,7 +5,7 @@
 
 import bs4 as bs
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 # interpreter: C:\Users\Szalamandra\Documents\szf\egressy\python\wxgladesprogik\wxglade_env\Scripts\python.exe
@@ -217,3 +217,4 @@ class NapiAdat:
 # FoCucc.kiIrFertozottek(adatObjLista)
 # FoCucc.kiIrHalottak(adatObjLista)
 #FoCucc.ertekeles(adatObjLista)
+
