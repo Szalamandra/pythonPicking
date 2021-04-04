@@ -38,10 +38,6 @@ class MyFrameMutassam(wx.Frame):
         self.grid_tabla.CreateGrid(5, 2)
         self.grid_tabla.SetRowLabelSize(25)
         self.grid_tabla.SetColLabelSize(26)
-        self.grid_tabla.EnableEditing(0)
-        self.grid_tabla.EnableDragColSize(0)
-        self.grid_tabla.EnableDragRowSize(0)
-        self.grid_tabla.EnableDragGridSize(0)
         self.grid_tabla.SetLabelBackgroundColour(wx.Colour(193, 233, 225))
         self.grid_tabla.SetColLabelValue(0, u"Napi Új Fertőzöttek Száma")
         self.grid_tabla.SetColSize(0, 271)
@@ -52,16 +48,15 @@ class MyFrameMutassam(wx.Frame):
         self.grid_tabla.SetRowSize(2, 30)
         self.grid_tabla.SetRowSize(3, 30)
         self.grid_tabla.SetRowSize(4, 30)
-        self.grid_tabla.SetMinSize((566, 176))
         self.grid_tabla.SetFont(wx.Font(12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_LIGHT, 0, "Malgun Gothic Semilight"))
-        sizer_2.Add(self.grid_tabla, 1, wx.ALIGN_CENTER_HORIZONTAL | wx.BOTTOM | wx.LEFT | wx.RIGHT, 28)
+        sizer_2.Add(self.grid_tabla, 1, wx.BOTTOM | wx.EXPAND | wx.LEFT | wx.RIGHT, 30)
 
-        sizer_2.Add((20, 2), 1, wx.EXPAND, 0)
+        sizer_2.Add((20, 20), 1, wx.EXPAND, 0)
 
-        self.visszaBtn = wx.Button(self, wx.ID_ANY, u"Szép...", style=wx.BU_AUTODRAW)
+        self.visszaBtn = wx.Button(self, wx.ID_ANY, "Rohanok is a boltba...", style=wx.BU_AUTODRAW)
         self.visszaBtn.SetBackgroundColour(wx.Colour(212, 229, 255))
         self.visszaBtn.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, 0, "MV Boli"))
-        sizer_2.Add(self.visszaBtn, 0, wx.ALIGN_CENTER_HORIZONTAL | wx.BOTTOM | wx.LEFT | wx.RIGHT | wx.SHAPED, 20)
+        sizer_2.Add(self.visszaBtn, 0, wx.ALIGN_CENTER_HORIZONTAL | wx.BOTTOM | wx.FIXED_MINSIZE | wx.LEFT | wx.RIGHT, 10)
 
         self.SetSizer(sizer_1)
 

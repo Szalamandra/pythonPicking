@@ -4,7 +4,6 @@
 #
 
 import wx
-from datetime import datetime
 
 # begin wxGlade: dependencies
 # end wxGlade
@@ -152,18 +151,14 @@ class MyFrameFo(wx.Frame):
 
         self.Layout()
         self.Centre()
+
         # end wxGlade
 
         MainController(self)
-        # mondjamController(self.kezdoPanel)
-        # mutassamController(kezdoPanel)
-        self.frame_statusbar.SetStatusText("Jóreggelt!")
+        #mondjamController(self.kezdoPanel)
+        #mutassamController(kezdoPanel)
 
-    def click_frameValto(self, event):  # wxGlade: MyFrameFo.<event_handler>
-        print("Event handler 'click_frameValto' not implemented!")
-        event.Skip()
 
-    # end of class MyFrameFo
 
-    def idoSzerintKoszon():
-        d = datetime.now
+
+# end of class MyFrameFo

@@ -100,11 +100,12 @@ class FoCucc:
             if int(objList[i].napiHalott) < 100:
                 szamolo += 1
         if szamolo == 5:
-            print("Eljött az ünneplés diadala!")
+            return 2
         elif szamolo > 0 and szamolo < 5:
-            print("Lassan indulnék a boltba...")
+            return 1
         else:
             print("Sajnos még nyaral Dionüszosz...")
+            return 0
 
 
 class NapiAdat:
@@ -212,7 +213,7 @@ class NapiAdat:
 
 
 # FoCucc.adatIras(FoCucc.voltEmarMamentes())
-adatObjLista = FoCucc.adatOlvasas()
+#adatObjLista = FoCucc.adatOlvasas()
 # FoCucc.kiIrFertozottek(adatObjLista)
 # FoCucc.kiIrHalottak(adatObjLista)
-FoCucc.ertekeles(adatObjLista)
+#FoCucc.ertekeles(adatObjLista)
