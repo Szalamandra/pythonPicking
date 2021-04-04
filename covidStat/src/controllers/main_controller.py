@@ -2,28 +2,30 @@ import wx
 
 # import views
 from views.MyFrameMondjam import MyFrameMondjam
-
-# from views.MyFrameFo import MyFrameFo
 from views.MyFrameMutassam import MyFrameMutassam
-
-# majd ide kellene a többi controllert is beszervezni asszem vagy lehet a myframefobe
-
+from models import conzolosCovidStat
 
 class MainController:
     def __init__(self, foFrame):
         # self.foFrame = MyFrameFo(None, wx.ID_ANY, "")
         self.foFrame = foFrame
+        self.model = conzolosCovidStat.FoCucc()
+        #adatlekeres/iras netrol
+        self.on_init_foFrame()
+
 
         # button handlerek:
         self.foFrame.Bind(wx.EVT_BUTTON, self.click_frameValto, self.foFrame.mondjamBtn)
         self.foFrame.Bind(
             wx.EVT_BUTTON, self.click_frameValto, self.foFrame.mutassamBtn
         )
+
         # mutassamFrame cuccai
         self.mutassamFrame = MyFrameMutassam(None, wx.ID_ANY, "")
         self.mutassamFrame.Bind(
             wx.EVT_BUTTON, self.click_frameValto, self.mutassamFrame.visszaBtn
         )
+
 
         # mondjamframe cuccai
         self.mondjamFrame = MyFrameMondjam(None, wx.ID_ANY, "")
@@ -38,7 +40,7 @@ class MainController:
         )
 
         self.foFrame.Show()
-
+    #functionok
     def click_frameValto(self, event):
         buttonDict = {}
         print(event.GetId())
@@ -54,20 +56,13 @@ class MainController:
             buttonDict = {self.mondjamFrame: self.foFrame}
 
         self.click_valto(buttonDict)
-
-        # if self.foFrame.mondjamBtn:
-        #    print(dir(event))
-        # print(event.__dict__)
-        # self.foFrame.Hide()
-        # self.mondjamFrame.Show()
-
         event.Skip()
 
     def click_valto(self, buttonDict):
-
         for key, value in buttonDict.items():
             key.Hide()
             value.Show()
 
-
-# MainController()
+   
+    def on_init_foFrame(self):
+        self.model.adatIras(self.model.voltEmarMamentes())

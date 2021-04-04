@@ -9,6 +9,7 @@ import wx.grid
 # end wxGlade
 from models.conzolosCovidStat import FoCucc
 from models.conzolosCovidStat import NapiAdat
+from controllers.mutassam_controller import mutassamController
 # begin wxGlade: extracode
 # end wxGlade
 
@@ -68,5 +69,8 @@ class MyFrameMutassam(wx.Frame):
         self.Layout()
         self.Centre()
         # end wxGlade
-
+        mutassamController(self)
+        #kozepen legyen a kiiras 
+        self.grid_tabla.SetDefaultCellAlignment(wx.ALIGN_CENTER, wx.ALIGN_TOP)
+        self.grid_tabla.HideCellEditControl()
 # end of class MyFrameMutassam

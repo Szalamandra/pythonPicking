@@ -82,7 +82,7 @@ class FoCucc:
             return objectList
 
     @staticmethod
-    # tablazathoz majd:
+    # tablazathoz majd de ezek nem kellettek végül:
     def kiIrFertozottek(objList):
         for i in range(5):
             print(objList[i].ujFertozott)

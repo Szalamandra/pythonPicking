@@ -18,7 +18,7 @@ class FoCucc:
     def __init__(self):
         pass
 
-    FAJL = "mentettTestData.txt"
+    FAJL = "mentettData.txt"
     FAJLOLVASNI = "mentettData.txt"
 
     #@staticmethod
@@ -66,7 +66,7 @@ class FoCucc:
 
             # return utsoNapiAdat.maiNapVan
 
-    # tablazathoz
+    # tablazathoz 
     @staticmethod
     def adatOlvasas():
         objectList = []
@@ -87,7 +87,7 @@ class FoCucc:
 
 
     @staticmethod
-    # tablazathoz majd:
+    # tablazathoz majd de ezek nem kellettek végül:
     def kiIrFertozottek(objList):
         for i in range(5):
             print(objList[i].ujFertozott)
