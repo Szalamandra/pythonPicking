@@ -6,6 +6,9 @@
 import bs4 as bs
 import urllib.request
 from datetime import datetime
+from os import path, curdir
+covidStatFolder = path.abspath(curdir)       #from os
+
 
 
 # interpreter: C:\Users\Szalamandra\Documents\szf\egressy\python\wxgladesprogik\wxglade_env\Scripts\python.exe
@@ -19,7 +22,7 @@ class FoCucc:
         pass
 
     FAJL = "mentettData.txt"
-    FAJLOLVASNI = "mentettData.txt"
+    FAJLOLVASNI = path.join(covidStatFolder, "src//models//mentettData.txt")
 
     #@staticmethod
     #def fajlNyitasFelulIrasra():
