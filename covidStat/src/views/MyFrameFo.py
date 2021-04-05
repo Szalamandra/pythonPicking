@@ -14,6 +14,10 @@ from controllers.main_controller import MainController
 from controllers.mondjam_controller import mondjamController
 from controllers.mutassam_controller import mutassamController
 
+from os import path,curdir
+covidStatFolder = path.abspath(curdir)       #from os
+
+kepIkonPath = path.join(covidStatFolder, "images//maskIcon.png")
 # begin wxGlade: extracode
 # end wxGlade
 
@@ -39,7 +43,7 @@ class MyFrameFo(wx.Frame):
         _icon = wx.NullIcon
         _icon.CopyFromBitmap(
             wx.Bitmap(
-                "C:\\Users\\Szalamandra\\Documents\\szf\\egressy\\python\\wxgladesprogik\\wxglade_env\\projektek\\covidStat\\images\\maskIcon.png",
+                kepIkonPath,
                 wx.BITMAP_TYPE_ANY,
             )
         )

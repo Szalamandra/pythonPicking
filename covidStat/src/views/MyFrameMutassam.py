@@ -6,10 +6,15 @@
 import wx
 # begin wxGlade: dependencies
 import wx.grid
+
 # end wxGlade
 from models.conzolosCovidStat import FoCucc
 from models.conzolosCovidStat import NapiAdat
 from controllers.mutassam_controller import mutassamController
+from os import path,curdir
+covidStatFolder = path.abspath(curdir)       #from os
+
+kepIkonPath = path.join(covidStatFolder, "images//maskIcon.png")
 # begin wxGlade: extracode
 # end wxGlade
 
@@ -22,7 +27,7 @@ class MyFrameMutassam(wx.Frame):
         self.SetSize((647, 469))
         self.SetTitle("Quarantine CountDown")
         _icon = wx.NullIcon
-        _icon.CopyFromBitmap(wx.Bitmap("C:\\Users\\Szalamandra\\Documents\\szf\\egressy\\python\\wxgladesprogik\\wxglade_env\\projektek\\covidStat\\images\\maskIcon.png", wx.BITMAP_TYPE_ANY))
+        _icon.CopyFromBitmap(wx.Bitmap(kepIkonPath, wx.BITMAP_TYPE_ANY))
         self.SetIcon(_icon)
         self.SetBackgroundColour(wx.Colour(110, 149, 195))
 

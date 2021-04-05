@@ -11,6 +11,13 @@ from wx.adv import Animation, AnimationCtrl
 from models.conzolosCovidStat import FoCucc
 from models.conzolosCovidStat import NapiAdat
 from controllers.mondjam_controller import mondjamController
+from os import path,curdir
+covidStatFolder = path.abspath(curdir)       #from os
+
+kepIkonPath = path.join(covidStatFolder, "images//maskIcon.png")
+gif1Path = path.join(covidStatFolder, "images//walkSmall.gif")
+gif2Path = path.join(covidStatFolder, "images//prepareSmall.gif")
+gif3Path = path.join(covidStatFolder, "images//partyTimeSmall.gif")
 
 # begin wxGlade: extracode
 # end wxGlade
@@ -24,7 +31,7 @@ class MyFrameMondjam(wx.Frame):
         self.SetSize((400, 391))
         self.SetTitle("Quarantine CountDown")
         _icon = wx.NullIcon
-        _icon.CopyFromBitmap(wx.Bitmap("C:\\Users\\Szalamandra\\Documents\\szf\\egressy\\python\\wxgladesprogik\\wxglade_env\\projektek\\covidStat\\images\\maskIcon.png", wx.BITMAP_TYPE_ANY))
+        _icon.CopyFromBitmap(wx.Bitmap(kepIkonPath, wx.BITMAP_TYPE_ANY))
         self.SetIcon(_icon)
         self.SetBackgroundColour(wx.Colour(110, 149, 195))
         self.Hide()
@@ -165,14 +172,14 @@ class MyFrameMondjam(wx.Frame):
             self.ctrl, 1, wx.ALIGN_CENTER | wx.LEFT | wx.RIGHT | wx.TOP, 10
         )
         
-        gif_2 = Animation("C:\\Users\\Szalamandra\\Documents\\szf\\egressy\\python\\wxgladesprogik\\wxglade_env\\projektek\\covidStat\\images\\prepareSmall.gif")
+        gif_2 = Animation(gif2Path)
         self.ctrl1 = AnimationCtrl(self, -1, gif_2)
         self.ctrl1.Stop()
         self.ctrl1.Hide()                
         sizer_8.Add(
             self.ctrl1, 1, wx.ALIGN_CENTER | wx.LEFT | wx.RIGHT | wx.TOP, 10
         )
-        gif_3 = Animation("C:/Users/Szalamandra/Documents/szf/egressy/python/wxgladesprogik/wxglade_env/projektek/covidStat/images/partyTimeSmall.gif")
+        gif_3 = Animation(gif3Path)
         self.ctrl2 = AnimationCtrl(self, -1, gif_3)
         self.ctrl2.Stop()
         self.ctrl2.Hide()                

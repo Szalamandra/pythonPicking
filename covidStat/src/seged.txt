@@ -1,0 +1,80 @@
+myframmondjam
+from models.conzolosCovidStat import FoCucc
+from models.conzolosCovidStat import NapiAdat
+
+from controllers.mondjam_controller import mondjamController
+from controllers.mutassam_controller import mutassamController
+
+
+tokjo tabazathoz:
+import wx.grid
+import wx
+
+
+class Frame ( wx.Frame ):
+
+    def __init__( self, parent ):
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Test", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+
+        sizer_main = wx.BoxSizer( wx.VERTICAL )
+        self.panel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        sizer_inner = wx.BoxSizer( wx.VERTICAL )
+        self.grid = wx.grid.Grid( self.panel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+
+        # Grid
+        self.grid.CreateGrid( 5, 5 )
+        self.grid.EnableEditing( True )
+        self.grid.EnableGridLines( True )
+        self.grid.SetGridLineColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
+        self.grid.EnableDragGridSize( False )
+        self.grid.SetMargins( 0, 0 )
+
+        # Columns
+        self.grid.EnableDragColMove( False )
+        self.grid.EnableDragColSize( True )
+        self.grid.SetColLabelSize( 30 )
+        self.grid.SetColLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
+
+        # Rows
+        self.grid.EnableDragRowSize( True )
+        self.grid.SetRowLabelSize( 80 )
+        self.grid.SetRowLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
+
+        # Label Appearance
+
+        # Cell Defaults
+        self.grid.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+        sizer_inner.Add( self.grid, 1, wx.ALL, 0 )
+
+
+        self.panel.SetSizer( sizer_inner )
+        self.panel.Layout()
+        sizer_inner.Fit( self.panel )
+        sizer_main.Add( self.panel, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+        self.SetSizer( sizer_main )
+        self.Layout()
+        self.Centre( wx.BOTH )
+        self.Show()
+
+        # Connect Events
+        self.grid.Bind( wx.grid.EVT_GRID_CELL_CHANGE, self.on_edit )
+
+        # Some essential stuff for resizing
+        font = wx.Font(pointSize = 10, family = wx.DEFAULT, style = wx.NORMAL, weight = wx.NORMAL, faceName = 'Consolas')
+        self.dc = wx.ScreenDC()
+        self.dc.SetFont(font)
+
+    def on_edit( self, event ):
+        row = event.GetRow()
+        col = event.GetCol()
+        size = self.dc.GetTextExtent(self.grid.GetCellValue(row, col))
+        if size[0] > self.grid.GetColSize(col): self.grid.SetColSize(col, size[0])
+        self.panel.Layout()
+
+
+if __name__ == "__main__":
+    app = wx.App()
+    Frame(None)
+    app.MainLoop()
