@@ -19,9 +19,9 @@ URL = "https://news.google.com/covid19/map?hl=hu&gl=HU&ceid=HU%3Ahu&mid=%2Fm%2F0
 class FoCucc:
     #legyen egy főmethod
     def __init__(self):
+        #self.ertekeles(self.adatOlvasas())
         pass
-
-    FAJL = "mentettData.txt"
+    #FAJL = "mentettData.txt"
     FAJLOLVASNI = path.join(covidStatFolder, "src//models//mentettData.txt")
 
     #@staticmethod
@@ -109,11 +109,13 @@ class FoCucc:
                 szamolo += 1
         if szamolo == 5:
             print("Eljött az ünneplés diadala!")
+            return 2
         elif szamolo > 0 and szamolo < 5:
             print("Lassan indulnék a boltba...")
+            return 1
         else:
             print("Sajnos még nyaral Dionüszosz...")
-
+            return 0
 
 class NapiAdat:
     COUNTER = 0
@@ -181,7 +183,7 @@ class NapiAdat:
         if ujObject == None:
             raise Exception
         else:
-            with open(FoCucc.FAJL, "a", encoding="UTF-8") as fa:
+            with open(FoCucc.FAJLOLVASNI, "a", encoding="UTF-8") as fa:
                 line = ":".join(
                     [
                         "\n" + str(ujObject.az),
@@ -200,7 +202,7 @@ class NapiAdat:
             raise Exception
         else:
             lines = []
-            with open(FoCucc.FAJL, "r+", encoding="UTF-8") as fw:
+            with open(FoCucc.FAJLOLVASNI, "r+", encoding="UTF-8") as fw:
                 fw.seek(0)
                 lines = fw.readlines()
                 # utsosorCharSzam=len(lines[len(lines) - 1])
@@ -213,7 +215,7 @@ class NapiAdat:
                 utsoSor[2] = ujObject.napiHalott
                 lines.append(ujObject)
                 fw.close()
-            with open(FoCucc.FAJL, "w+", encoding="UTF-8") as fw:
+            with open(FoCucc.FAJLOLVASNI, "w+", encoding="UTF-8") as fw:
                 for line in range(len(lines)):
                     fw.write(str(lines[line]))
                 fw.close()

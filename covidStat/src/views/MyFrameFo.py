@@ -159,10 +159,11 @@ class MyFrameFo(wx.Frame):
         # end wxGlade
 
         MainController(self)
-        # mondjamController(self.kezdoPanel)
-        # mutassamController(kezdoPanel)
+        #mondjamController(self.kezdoPanel)
+        #mutassamController(kezdoPanel)
         self.frame_statusbar.SetStatusText("Allways Look on The Bright Side Of LIfe!!!")
         self.idoSzerintKoszon()
+        print(kepIkonPath)
 
     # end of class MyFrameFo
 

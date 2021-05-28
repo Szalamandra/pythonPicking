@@ -52,7 +52,7 @@ class MainController:
         elif event.GetId() == (-31982):
             buttonDict = {self.mutassamFrame: self.foFrame}
         else:
-            print(event.GetId())
+            #print(event.GetId())
             buttonDict = {self.mondjamFrame: self.foFrame}
 
         self.click_valto(buttonDict)

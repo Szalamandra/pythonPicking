@@ -190,6 +190,7 @@ class MyFrameMondjam(wx.Frame):
         self.Layout()
 
         mondjamController(self)
+        
 
 
 # end of class MyFrameMondjam
