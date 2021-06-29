@@ -1,0 +1,11 @@
+C:\Users\Eszti\source\fogaszat\fogaszat\bin\Debug\fogaszat.exe.config
+C:\Users\Eszti\source\fogaszat\fogaszat\bin\Debug\fogaszat.exe
+C:\Users\Eszti\source\fogaszat\fogaszat\bin\Debug\fogaszat.pdb
+C:\Users\Eszti\source\fogaszat\fogaszat\obj\Debug\fogaszat.csprojAssemblyReference.cache
+C:\Users\Eszti\source\fogaszat\fogaszat\obj\Debug\fogaszat.Properties.Resources.resources
+C:\Users\Eszti\source\fogaszat\fogaszat\obj\Debug\fogaszat.csproj.GenerateResource.cache
+C:\Users\Eszti\source\fogaszat\fogaszat\obj\Debug\fogaszat.csproj.CoreCompileInputs.cache
+C:\Users\Eszti\source\fogaszat\fogaszat\obj\Debug\fogaszat.exe
+C:\Users\Eszti\source\fogaszat\fogaszat\obj\Debug\fogaszat.pdb
+C:\Users\Eszti\source\fogaszat\fogaszat\obj\Debug\fogaszat.Formujpaciens.resources
+C:\Users\Eszti\source\fogaszat\fogaszat\obj\Debug\fogaszat.FoglalasokListazasa.resources

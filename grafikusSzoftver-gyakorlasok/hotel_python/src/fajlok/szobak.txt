@@ -1,0 +1,8 @@
+egyágyas classic
+kétágyas classic
+családi classic
+egyágyas superior
+kétágyas superior
+családi superior
+lakosztály 1 hálószoba
+lakosztály 2 hálószoba

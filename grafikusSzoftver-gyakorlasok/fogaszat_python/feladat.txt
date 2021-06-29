@@ -1,0 +1,14 @@
+ Fogászat grafikus programmal a mintán látható főablakot hoztuk létre. Kiválasztható komponensekbe töltöttük a pácienseket, az orvosokat és a kezelések listáját. Foglaláskor ezeket egymáshoz rendelve tároljuk el, megfelelő adatszerkezetben.
+A főablak megtervezésekor a választott programozási nyelvnek megfelelő komponenseket kell választani és elhelyezni. A főablakban van még egy kép (dekorációs elem, a fogászatos forrásoknál ott van), egy gomb, ami a konkrét foglalást végzi, és egy kilépés kép, amire kattintva bezárul az ablak. Csak, még bezárás előtt egy rákérdezés is megjelenik: biztosan ki akarsz lépni? Igen-re bezárul már az ablak, mégsem, vagy nem esetén pedig tovább használható, nem történik semmi.
+Ebben a programban minden egyebet felpakoltunk a menübe, ezért van arról is minta. 
+
+
+Páciensek menü: új páciens felvitele - külön ablakban, és mentés fájlba (az adott adatszerkezet tartalmát, amiben eltároltuk a beolvasott pácienslistát, kimentjük fájlba). Történhetett változás, pl felvehettünk új pácienst, ezért életszerű. A páciensek nevét és személyi igazolvány számát kell megadni, a forrásban is ez a két adat szerepel róluk, ezeket kell eltárolni.
+Foglalások menü: új foglalás - ez ugyanazt csinálja, mint a gomb, új foglalást rögzít, a három komponensben kiválasztott adatokat eltároljuk. Foglalások listázása - ez külön ablakot jelenít meg (aminek osztályt is létre kell hozni és annak egy példánya a megjelenő ablak), van róla minta. És mentés fájlba - az eltárolt foglalásokat írjuk ki fájlba.
+Minden műveletről a felhasználót tájékoztatjuk, erről egy mintát mellékeltem, de a többinél is kell! A feladatban ez szerepelni is fog!
+Amikor foglalást rögzítünk, akkor a kiválasztott "elemek" jelenjenek is meg a mintán látható módon, a kép felett, egyszerű feliratként.
+
+
+Foglalások listázása ablak:
+itt vagy az adatszerkezet, vagy a fájl tartalmát kell kiíratni, egy megfelelő komponensbe, ami ilyen listázásra alkalmas. Két gomb is látható, a Beolvasás egy windows-os megnyitás ablakot jelenít meg (nem kötelező windowsos alapértelmezettnek lennie, de biztosítania kell, hogy a felhasználó kiválaszthassa, melyik fájlt akarja beolvastatni), a Vissza csak bezárja ezt az ablakot és visszatér a főablakhoz.
+Bármilyen ablak jelenik meg, addig a főablak nem lehet aktív, és a programot csak a főablakból lehet/lehessen bezárni.
